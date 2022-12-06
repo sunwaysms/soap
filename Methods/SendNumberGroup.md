@@ -116,7 +116,7 @@ public final long SendNumberGroup(String UserName, String Password, long[] Numbe
 ### C#
 
 ```C#
-public wp-content class API {
+public static class API {
 
 /// <summary>
 /// Send To Group Number
@@ -129,7 +129,7 @@ public wp-content class API {
 /// <param name="IsFlash">True/False</param>
 /// <param name="DontSendToRepeatedNumber">True/False</param>
 /// <returns>SendID for Send To Group</returns>
-public wp-content long SendNumberGroup(string UserName, string Password, long[] NumberGroupID, string Message, string SpecialNumber, bool IsFlash, bool DontSendToRepeatedNumber) {
+public static long SendNumberGroup(string UserName, string Password, long[] NumberGroupID, string Message, string SpecialNumber, bool IsFlash, bool DontSendToRepeatedNumber) {
     using (SOAP.SMS SMSService = new SOAP.SMS()) {
         return SMSService.SendNumberGroup(UserName, Password,NumberGroupID,Message,SpecialNumber,IsFlash,DontSendToRepeatedNumber);
     }
