@@ -27,6 +27,7 @@
 <tr><td>Array Of NumberGroupItem</td><td>آرایه ای از آبجکت NumberGroupItem</td></tr>
 </table>
 
+- [ توضیحات آبجکت NumberGroupItem](https://github.com/sunwaysms/soap/blob/main/Objects/NumberGroupItem.md)
 - [ توضیح کامل هر یک از کلمات کلیدی](https://github.com/sunwaysms/url/blob/main/Parameters.md)
 - [مشاهده لیست کدهای خطا و توضیحات مربوط به هر کدام](https://github.com/sunwaysms/url/blob/main/Errors.md)
 

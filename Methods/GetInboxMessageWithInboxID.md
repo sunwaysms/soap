@@ -30,6 +30,8 @@
 <tr><td>ResultInbox</td><td>آرایه ای از InboxItem2</td></tr>
 </table>
 
+- [ توضیحات آبجکت ResultInbox](https://github.com/sunwaysms/soap/blob/main/Objects/ResultInbox.md)
+- [ توضیحات آرایه InboxItem2](https://github.com/sunwaysms/soap/blob/main/Objects/InboxItem2.md)
 - [ توضیح کامل هر یک از کلمات کلیدی](https://github.com/sunwaysms/soap/blob/main/Parameters.md)
 - [مشاهده لیست کدهای خطا و توضیحات مربوط به هر کدام](https://github.com/sunwaysms/soap/blob/main/Errors.md)
 

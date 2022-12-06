@@ -29,6 +29,7 @@
 <tr><td>Array Of InboxItem</td><td>آرایه ای از آبجکت InboxItem</td></tr>
 </table>
 
+- [ توضیحات آرایه InboxItem](https://github.com/sunwaysms/soap/blob/main/Objects/InboxItem.md)
 - [ توضیح کامل هر یک از کلمات کلیدی](https://github.com/sunwaysms/soap/blob/main/Parameters.md)
 - [مشاهده لیست کدهای خطا و توضیحات مربوط به هر کدام](https://github.com/sunwaysms/soap/blob/main/Errors.md)
 
