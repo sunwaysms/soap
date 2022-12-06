@@ -33,7 +33,7 @@
 
 <table dir="rtl" align="center">
 <tr><th>نوع</th><th>توضیح</th></tr>
-<tr><td>Long Integer</td><td>شناسه ارسال زمانبندی شده یا کد خطا</td></tr>
+<tr><td>Long Integer</td><td>آرایه ای شامل شناسه پیامک یا کد خطا</td></tr>
 </table>
 
 
