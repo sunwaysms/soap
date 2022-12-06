@@ -109,7 +109,7 @@ public final long[] SendArray(String UserName, String Password, String[] Recipie
 ### C#
 
 ```C#
-public wp-content class API {
+public static class API {
 
 /// <summary>
 /// Send Array 
@@ -122,7 +122,7 @@ public wp-content class API {
 /// <param name="IsFlash">True/False</param>
 /// <param name="CheckingMessageID">Your local ID for message</param>
 /// <returns>MessageID for each SMS</returns>
-public wp-content long[] SendArray(string UserName, string Password, string[] RecipientNumber, string Message, string SpecialNumber, bool IsFlash, long[] CheckingMessageID) {
+public static long[] SendArray(string UserName, string Password, string[] RecipientNumber, string Message, string SpecialNumber, bool IsFlash, long[] CheckingMessageID) {
     using (SOAP.SMS SMSService = new SOAP.SMS()) {
         return SMSService.SendArray(UserName, Password, RecipientNumber, Message, SpecialNumber, IsFlash, CheckingMessageID);
     }
