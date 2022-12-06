@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendArray">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RecipientNumber" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SpecialNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsFlashMessage" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheckingMessageID" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="long" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendArrayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendArrayResult" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendArraySchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RecipientNumber" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SpecialNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsFlashMessage" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Month" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Day" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hour" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Minute" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendArrayScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendArrayScheduleResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheckingMessageID" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessageIDResult" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessageStatusResult" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendNumberGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumberGroupID" type="tns:ArrayOfLong" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SpecialNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsFlashMessage" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="DontSendToRepeatedNumber" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendNumberGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendNumberGroupResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendNumberGroupSchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumberGroupID" type="tns:ArrayOfLong" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SpecialNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsFlashMessage" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="DontSendToRepeatedNumber" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Month" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Day" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hour" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Minute" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendNumberGroupScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendNumberGroupScheduleResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNumberGroupData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNumberGroupDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNumberGroupDataResult" type="tns:ArrayOfNumberGroupItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNumberGroupItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NumberGroupItem" nillable="true" type="tns:NumberGroupItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NumberGroupItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NumberGroupID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumberCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FarsiName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnglishName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertNumberInNumberGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumberGroupID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonNumber" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonName" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertNumberInNumberGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertNumberInNumberGroupResult" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInboxMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumberOfMessage" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInboxMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInboxMessageResult" type="tns:ArrayOfInboxItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInboxItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InboxItem" nillable="true" type="tns:InboxItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InboxItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InboxID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpecialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SenderNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiveDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UDH" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInboxMessageWithNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumberOfMessage" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="SpecialNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInboxMessageWithNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInboxMessageWithNumberResult" type="tns:ArrayOfInboxItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCredit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCreditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCreditResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoResult" type="tns:ProfileInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProfileInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SMSCredit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalSendSMS" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalReciveSMS" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalIncomeSMS" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notifications" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NotificationsDisc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NotificationsDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PublicNotifications" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PublicNotificationsDisc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PublicNotificationsDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInboxMessageWithInboxID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumberOfMessage" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="InboxID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsReaded" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInboxMessageWithInboxIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInboxMessageWithInboxIDResult" type="tns:ResultInbox" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultInbox">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResultBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Messages" type="tns:ArrayOfInboxItem2" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResultBase" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInboxItem2">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InboxItem2" nillable="true" type="tns:InboxItem2" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InboxItem2">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InboxID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpecialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SenderNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReceiveDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UDH" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendArraySoapIn">
+    <wsdl:part name="parameters" element="tns:SendArray" />
+  </wsdl:message>
+  <wsdl:message name="SendArraySoapOut">
+    <wsdl:part name="parameters" element="tns:SendArrayResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendArrayScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:SendArraySchedule" />
+  </wsdl:message>
+  <wsdl:message name="SendArrayScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:SendArrayScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessageID" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessageIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessageStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessageStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendNumberGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:SendNumberGroup" />
+  </wsdl:message>
+  <wsdl:message name="SendNumberGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:SendNumberGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendNumberGroupScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:SendNumberGroupSchedule" />
+  </wsdl:message>
+  <wsdl:message name="SendNumberGroupScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:SendNumberGroupScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNumberGroupDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNumberGroupData" />
+  </wsdl:message>
+  <wsdl:message name="GetNumberGroupDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNumberGroupDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertNumberInNumberGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertNumberInNumberGroup" />
+  </wsdl:message>
+  <wsdl:message name="InsertNumberInNumberGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertNumberInNumberGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInboxMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInboxMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageWithNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInboxMessageWithNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageWithNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInboxMessageWithNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCredit" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCreditResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageWithInboxIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInboxMessageWithInboxID" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageWithInboxIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInboxMessageWithInboxIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SMSSoap">
+    <wsdl:operation name="SendArray">
+      <wsdl:input message="tns:SendArraySoapIn" />
+      <wsdl:output message="tns:SendArraySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendArraySchedule">
+      <wsdl:input message="tns:SendArrayScheduleSoapIn" />
+      <wsdl:output message="tns:SendArrayScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageID">
+      <wsdl:input message="tns:GetMessageIDSoapIn" />
+      <wsdl:output message="tns:GetMessageIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatus">
+      <wsdl:input message="tns:GetMessageStatusSoapIn" />
+      <wsdl:output message="tns:GetMessageStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendNumberGroup">
+      <wsdl:input message="tns:SendNumberGroupSoapIn" />
+      <wsdl:output message="tns:SendNumberGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendNumberGroupSchedule">
+      <wsdl:input message="tns:SendNumberGroupScheduleSoapIn" />
+      <wsdl:output message="tns:SendNumberGroupScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNumberGroupData">
+      <wsdl:input message="tns:GetNumberGroupDataSoapIn" />
+      <wsdl:output message="tns:GetNumberGroupDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertNumberInNumberGroup">
+      <wsdl:input message="tns:InsertNumberInNumberGroupSoapIn" />
+      <wsdl:output message="tns:InsertNumberInNumberGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxMessage">
+      <wsdl:input message="tns:GetInboxMessageSoapIn" />
+      <wsdl:output message="tns:GetInboxMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxMessageWithNumber">
+      <wsdl:input message="tns:GetInboxMessageWithNumberSoapIn" />
+      <wsdl:output message="tns:GetInboxMessageWithNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCredit">
+      <wsdl:input message="tns:GetCreditSoapIn" />
+      <wsdl:output message="tns:GetCreditSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input message="tns:GetUserInfoSoapIn" />
+      <wsdl:output message="tns:GetUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxMessageWithInboxID">
+      <wsdl:input message="tns:GetInboxMessageWithInboxIDSoapIn" />
+      <wsdl:output message="tns:GetInboxMessageWithInboxIDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SMSSoap" type="tns:SMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendArray">
+      <soap:operation soapAction="http://tempuri.org/SendArray" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendArraySchedule">
+      <soap:operation soapAction="http://tempuri.org/SendArraySchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageID">
+      <soap:operation soapAction="http://tempuri.org/GetMessageID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatus">
+      <soap:operation soapAction="http://tempuri.org/GetMessageStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendNumberGroup">
+      <soap:operation soapAction="http://tempuri.org/SendNumberGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendNumberGroupSchedule">
+      <soap:operation soapAction="http://tempuri.org/SendNumberGroupSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumberGroupData">
+      <soap:operation soapAction="http://tempuri.org/GetNumberGroupData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNumberInNumberGroup">
+      <soap:operation soapAction="http://tempuri.org/InsertNumberInNumberGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxMessage">
+      <soap:operation soapAction="http://tempuri.org/GetInboxMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxMessageWithNumber">
+      <soap:operation soapAction="http://tempuri.org/GetInboxMessageWithNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCredit">
+      <soap:operation soapAction="http://tempuri.org/GetCredit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap:operation soapAction="http://tempuri.org/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxMessageWithInboxID">
+      <soap:operation soapAction="http://tempuri.org/GetInboxMessageWithInboxID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SMSSoap12" type="tns:SMSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendArray">
+      <soap12:operation soapAction="http://tempuri.org/SendArray" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendArraySchedule">
+      <soap12:operation soapAction="http://tempuri.org/SendArraySchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageID">
+      <soap12:operation soapAction="http://tempuri.org/GetMessageID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetMessageStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendNumberGroup">
+      <soap12:operation soapAction="http://tempuri.org/SendNumberGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendNumberGroupSchedule">
+      <soap12:operation soapAction="http://tempuri.org/SendNumberGroupSchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumberGroupData">
+      <soap12:operation soapAction="http://tempuri.org/GetNumberGroupData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNumberInNumberGroup">
+      <soap12:operation soapAction="http://tempuri.org/InsertNumberInNumberGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxMessage">
+      <soap12:operation soapAction="http://tempuri.org/GetInboxMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxMessageWithNumber">
+      <soap12:operation soapAction="http://tempuri.org/GetInboxMessageWithNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCredit">
+      <soap12:operation soapAction="http://tempuri.org/GetCredit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInboxMessageWithInboxID">
+      <soap12:operation soapAction="http://tempuri.org/GetInboxMessageWithInboxID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMS">
+    <wsdl:port name="SMSSoap" binding="tns:SMSSoap">
+      <soap:address location="http://sms.sunwaysms.com/smsws/soap.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SMSSoap12" binding="tns:SMSSoap12">
+      <soap12:address location="http://sms.sunwaysms.com/smsws/soap.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
