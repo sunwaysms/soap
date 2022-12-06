@@ -1,16 +1,16 @@
-# راهنمای متد GetInboxMessage
+# راهنمای متد GetUserInfo
 
-- [راهنمای متد GetInboxMessage](#راهنمای-متد-getinboxmessage)
+- [راهنمای متد GetUserInfo](#راهنمای-متد-getuserinfo)
   - [پارامترهای ورودی](#پارامترهای-ورودی)
   - [خروجی متد](#خروجی-متد)
-  - [نکات مهم در مورد کار با متد GetInboxMessage](#نکات-مهم-در-مورد-کار-با-متد-getinboxmessage)
+  - [نکات مهم در مورد کار با متد GetUserInfo](#نکات-مهم-در-مورد-کار-با-متد-getuserinfo)
   - [نمونه کد](#نمونه-کد)
     - [PHP](#php)
     - [Java](#java)
     - [C#](#c)
     - [VB.net](#vbnet)
 
-با استفاده از این متد شما می توانید تعداد مشخصی از پیامک های دریافتی خود را در روز اخیر دریافت نمایید . با توجه به جدول ذیل پارامتر های این متد را مقدار دهی کنید .
+با استفاده از این متد شما می توانید به اطلاعات کاربر دسترسی پیدا کنید. با توجه به جدول ذیل پارامتر های این متد را مقدار دهی کنید .
 
 ## پارامترهای ورودی
 
@@ -18,22 +18,20 @@
 <tr><th>نام</th><th>نوع</th><th>اجباری / اختیاری</th><th>توضیح</th></tr>
 <tr><td>UserName</td><td>String</td><td>اجباری</td><td>نام کاربری</td></tr>
 <tr><td>Password</td><td>String</td><td>اجباری</td><td>کلمه عبور</td></tr>
-<tr><td>NumberOfMessage</td><td>Integer</td><td>اجباری</td><td>تعداد پیامک های درخواستی</td></tr>
 </table>
 
 ## خروجی متد
 
 <table dir="rtl" align="center">
 <tr><th>کلید</th><th>توضیح</th></tr>
-<tr><td>Array Of InboxItem</td><td>آرایه ای از آبجکت InboxItem</td></tr>
+<tr><td>ProfileInfo</td><td>آبجکت شامل اطلاعات کاربری است</td></tr>
 </table>
 
 - [ توضیح کامل هر یک از کلمات کلیدی](https://github.com/sunwaysms/soap/blob/main/Parameters.md)
 - [مشاهده لیست کدهای خطا و توضیحات مربوط به هر کدام](https://github.com/sunwaysms/soap/blob/main/Errors.md)
 
-## نکات مهم در مورد کار با متد GetInboxMessage
-
-- مقدار بازگشتی این متد آرایه ای از آبجکتی با نوع InboxItem می باشد . فرمت آبجکت مذکور در فایل WSDL موجود می باشد .
+## نکات مهم در مورد کار با متد GetUserInfo
+- مقدار بازگشتی این متد، آبجکت ProfileInfo که شامل شامل اطلاعات کاربری می باشد . فرمت آبجکت مذکور در فایل WSDL موجود می باشد .
 
 ## نمونه کد
 
@@ -65,13 +63,12 @@ class SMS
         $client = GetClient();
         return $client->__getFunctions();
     }
-    
-    public Function GetInboxMessage($NumberOfMessage){
-        $option = array('UserName'=> $this->Username,'Password'=> $this->Password,
-                        'NumberOfMessage'=> $NumberOfMessage);
+
+    public Function GetUserInfo() {
+            $option = array('UserName'=> $this->Username,'Password'=> $this->Password);
         
         $client = $this->GetClient();
-        return $client->GetInboxMessage($option)->GetInboxMessageResult;
+        return $client->GetUserInfo($option)->GetUserInfoResult;
     }
 
 }
@@ -81,18 +78,17 @@ class SMS
 
 ```Java
 /** 
-    Get Inbox Message
+    Get User Info
          
     @param UserName String
     @param Password String
-    @param NumberOfMessage Int Number of message
-    @return InboxItem
+    @return ProfileInfo
 */
-public final SOAP.InboxItem[] GetInboxMessage(String UserName, String Password, int NumberOfMessage)
+public final SOAP.ProfileInfo GetUserInfo(String UserName, String Password)
 {
     try (SOAP.SMS SMSService = new SOAP.SMS())
     {
-        return SMSService.GetInboxMessage(UserName, Password, NumberOfMessage);
+        return SMSService.GetUserInfo(UserName, Password);
     }
     catch (RuntimeException ex){}
 }
@@ -104,15 +100,14 @@ public final SOAP.InboxItem[] GetInboxMessage(String UserName, String Password, 
 public static class API {
 
 /// <summary>
-/// Get Inbox Message
+/// Get User Info
 /// </summary>
 /// <param name="UserName">String</param>
 /// <param name="Password">String</param>
-/// <param name="NumberOfMessage">Int Number of message</param>
-/// <returns>InboxItem</returns>
-public static SOAP.InboxItem[] GetInboxMessage(string UserName, string Password, int NumberOfMessage) {
+/// <returns>ProfileInfo</returns>
+public static SOAP.ProfileInfo GetUserInfo(string UserName, string Password) {
     using (SOAP.SMS SMSService = new SOAP.SMS()) {
-        return SMSService.GetInboxMessage(UserName, Password, NumberOfMessage);
+        return SMSService.GetUserInfo(UserName, Password);
     }
 }
 
@@ -130,15 +125,14 @@ Imports System.Web.Script.Serialization
 public Class API
 
 ''' <summary>
-''' Get Inbox Message
+''' Get User Info
 ''' </summary>
 ''' <param name="UserName">String</param>
 ''' <param name="Password">String</param>
-''' <param name="NumberOfMessage">Int Number of message</param>
-''' <returns>InboxItem</returns>
-public  Shared Function GetInboxMessage(UserName As String, Password As String, NumberOfMessage As Integer) As SOAP.InboxItem()
+''' <returns>ProfileInfo</returns>
+public  Shared Function GetUserInfo(UserName As String, Password As String) As SOAP.ProfileInfo
     Using SMSService As New SOAP.SMS()
-        Return SMSService.GetInboxMessage(UserName, Password, NumberOfMessage)
+        Return SMSService.GetUserInfo(UserName, Password)
     End Using
 End Function
 

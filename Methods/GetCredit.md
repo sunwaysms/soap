@@ -1,16 +1,16 @@
-# راهنمای متد GetInboxMessage
+# راهنمای متد GetCredit
 
-- [راهنمای متد GetInboxMessage](#راهنمای-متد-getinboxmessage)
+- [راهنمای متد GetCredit](#راهنمای-متد-getcredit)
   - [پارامترهای ورودی](#پارامترهای-ورودی)
   - [خروجی متد](#خروجی-متد)
-  - [نکات مهم در مورد کار با متد GetInboxMessage](#نکات-مهم-در-مورد-کار-با-متد-getinboxmessage)
+  - [نکات مهم در مورد کار با متد GetCredit](#نکات-مهم-در-مورد-کار-با-متد-getcredit)
   - [نمونه کد](#نمونه-کد)
     - [PHP](#php)
     - [Java](#java)
     - [C#](#c)
     - [VB.net](#vbnet)
 
-با استفاده از این متد شما می توانید تعداد مشخصی از پیامک های دریافتی خود را در روز اخیر دریافت نمایید . با توجه به جدول ذیل پارامتر های این متد را مقدار دهی کنید .
+با استفاده از این متد شما می توانید از باقیمانده اعتبار پیام کوتاه خود مطلع شوید . 
 
 ## پارامترهای ورودی
 
@@ -18,22 +18,22 @@
 <tr><th>نام</th><th>نوع</th><th>اجباری / اختیاری</th><th>توضیح</th></tr>
 <tr><td>UserName</td><td>String</td><td>اجباری</td><td>نام کاربری</td></tr>
 <tr><td>Password</td><td>String</td><td>اجباری</td><td>کلمه عبور</td></tr>
-<tr><td>NumberOfMessage</td><td>Integer</td><td>اجباری</td><td>تعداد پیامک های درخواستی</td></tr>
 </table>
 
 ## خروجی متد
 
 <table dir="rtl" align="center">
-<tr><th>کلید</th><th>توضیح</th></tr>
-<tr><td>Array Of InboxItem</td><td>آرایه ای از آبجکت InboxItem</td></tr>
+<tr><th>کلید</th><th>توضیح</td></tr>
+<tr><td>Long Integer</td><td>باقیمانده اعتبار پیام کوتاه کاربر یا کد خطا</td></tr>
 </table>
 
 - [ توضیح کامل هر یک از کلمات کلیدی](https://github.com/sunwaysms/soap/blob/main/Parameters.md)
 - [مشاهده لیست کدهای خطا و توضیحات مربوط به هر کدام](https://github.com/sunwaysms/soap/blob/main/Errors.md)
 
-## نکات مهم در مورد کار با متد GetInboxMessage
+## نکات مهم در مورد کار با متد GetCredit
 
-- مقدار بازگشتی این متد آرایه ای از آبجکتی با نوع InboxItem می باشد . فرمت آبجکت مذکور در فایل WSDL موجود می باشد .
+- مقدار بازگشتی این متد یک مقدار صحیح است که نشان دهنده باقیمانده اعتبار پیام کوتاه شما می باشد .
+- شما می توانید قبل از هر ارسال با استفاده از این متد از باقیمانده اعتبار پیام کوتاه خود مطلع شوید و در صورت کمبود اعتبار ، از ارسال پیامک ها و بروز خطا جلوگیری کنید .
 
 ## نمونه کد
 
@@ -64,14 +64,12 @@ class SMS
         $arr = array();
         $client = GetClient();
         return $client->__getFunctions();
-    }
+    }  
     
-    public Function GetInboxMessage($NumberOfMessage){
-        $option = array('UserName'=> $this->Username,'Password'=> $this->Password,
-                        'NumberOfMessage'=> $NumberOfMessage);
-        
+    public Function GetCredit(){
+        $option = array('UserName'=> $this->Username,'Password'=> $this->Password);
         $client = $this->GetClient();
-        return $client->GetInboxMessage($option)->GetInboxMessageResult;
+        return $client->GetCredit($option)->GetCreditResult;
     }
 
 }
@@ -81,18 +79,17 @@ class SMS
 
 ```Java
 /** 
-    Get Inbox Message
+    Get Account Credit
          
     @param UserName String
     @param Password String
-    @param NumberOfMessage Int Number of message
-    @return InboxItem
+    @return long Credit
 */
-public final SOAP.InboxItem[] GetInboxMessage(String UserName, String Password, int NumberOfMessage)
+public final long GetCredit(String UserName, String Password)
 {
     try (SOAP.SMS SMSService = new SOAP.SMS())
     {
-        return SMSService.GetInboxMessage(UserName, Password, NumberOfMessage);
+        return SMSService.GetCredit(UserName, Password);
     }
     catch (RuntimeException ex){}
 }
@@ -104,15 +101,14 @@ public final SOAP.InboxItem[] GetInboxMessage(String UserName, String Password, 
 public static class API {
 
 /// <summary>
-/// Get Inbox Message
+/// Get Account Credit
 /// </summary>
 /// <param name="UserName">String</param>
 /// <param name="Password">String</param>
-/// <param name="NumberOfMessage">Int Number of message</param>
-/// <returns>InboxItem</returns>
-public static SOAP.InboxItem[] GetInboxMessage(string UserName, string Password, int NumberOfMessage) {
+/// <returns>long Credit</returns>
+public static long GetCredit(string UserName, string Password) {
     using (SOAP.SMS SMSService = new SOAP.SMS()) {
-        return SMSService.GetInboxMessage(UserName, Password, NumberOfMessage);
+        return SMSService.GetCredit(UserName, Password);
     }
 }
 
@@ -130,15 +126,14 @@ Imports System.Web.Script.Serialization
 public Class API
 
 ''' <summary>
-''' Get Inbox Message
+''' Get Account Credit
 ''' </summary>
 ''' <param name="UserName">String</param>
 ''' <param name="Password">String</param>
-''' <param name="NumberOfMessage">Int Number of message</param>
-''' <returns>InboxItem</returns>
-public  Shared Function GetInboxMessage(UserName As String, Password As String, NumberOfMessage As Integer) As SOAP.InboxItem()
+''' <returns>long Credit</returns>
+public  Shared Function GetCredit(UserName As String, Password As String) As Long
     Using SMSService As New SOAP.SMS()
-        Return SMSService.GetInboxMessage(UserName, Password, NumberOfMessage)
+        Return SMSService.GetCredit(UserName, Password)
     End Using
 End Function
 
