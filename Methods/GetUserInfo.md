@@ -27,6 +27,7 @@
 <tr><td>ProfileInfo</td><td>آبجکت شامل اطلاعات کاربری است</td></tr>
 </table>
 
+- [ توضیحات آبجکت ProfileInfo](https://github.com/sunwaysms/soap/blob/main/Objects/ProfileInfo.md)
 - [ توضیح کامل هر یک از کلمات کلیدی](https://github.com/sunwaysms/soap/blob/main/Parameters.md)
 - [مشاهده لیست کدهای خطا و توضیحات مربوط به هر کدام](https://github.com/sunwaysms/soap/blob/main/Errors.md)
 
