@@ -100,7 +100,7 @@ public final long[] GetMessageID(String UserName, String Password, long[] Checki
 ### C#
 
 ```C#
-public wp-content class API {
+public static class API {
 
 /// <summary>
 /// Get Message ID
@@ -109,7 +109,7 @@ public wp-content class API {
 /// <param name="Password">String</param>
 /// <param name="CheckingMessageID">Your local ID for message</param>
 /// <returns>MessageIDs</returns>
-public wp-content long[] GetMessageID(string UserName, string Password,long[] CheckingMessageID) {
+public static long[] GetMessageID(string UserName, string Password,long[] CheckingMessageID) {
     using (SOAP.SMS SMSService = new SOAP.SMS()) {
         return SMSService.GetMessageID(UserName, Password, CheckingMessageID);
     }

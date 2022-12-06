@@ -120,7 +120,7 @@ public final long[] GetMessageStatus(String UserName, String Password, long[] Me
 ### C#
 
 ```C#
-public wp-content class API {
+public static class API {
 
 /// <summary>
 /// Get Message Status
@@ -129,7 +129,7 @@ public wp-content class API {
 /// <param name="Password">String</param>
 /// <param name="MessageID">long[] MessageIDs</param>
 /// <returns></returns>
-public wp-content long[] GetMessageStatus(string UserName, string Password, long[] MessageID) {
+public static long[] GetMessageStatus(string UserName, string Password, long[] MessageID) {
     using (SOAP.SMS SMSService = new SOAP.SMS()) {
         return SMSService.GetMessageStatus(UserName, Password, MessageID);
     }
